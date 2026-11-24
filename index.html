@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>이름이 남은 자리</title>
+<meta name="description" content="설화와 옛 문헌 속 지명·자연물·금기·낱말의 유래를, 출처를 앞세워 나란히 놓는 아카이브">
+<meta property="og:type" content="website">
+<meta property="og:title" content="이름이 남은 자리">
+<meta property="og:description" content="설화와 옛 문헌 속 지명·자연물·금기·낱말의 유래를, 출처를 앞세워 나란히 놓는 아카이브">
+<meta property="og:url" content="https://ireum-jari.github.io/">
+<meta property="og:image" content="https://ireum-jari.github.io/og.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect x='3' y='3' width='58' height='58' rx='4' fill='%23EDEFEA' stroke='%239E3A2F' stroke-width='5'/%3E%3Ctext x='32' y='47' font-size='40' text-anchor='middle' fill='%239E3A2F' font-family='serif' font-weight='700'%3E%E5%90%8D%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#EDEFEA; --paper-2:#E2E6DF; --ink:#1C2321; --ink-soft:#4A5450;
+  --green:#3E6B5C; --blue:#2E5C8A; --seal:#9E3A2F; --line:#C5CCC4;
+  --surface:#F6F7F3;
+  --font-body:"Gowun Batang","Noto Serif KR","Apple SD Gothic Neo","Malgun Gothic",serif;
+  --font-han:"Noto Serif KR","Gowun Batang","Batang","AppleMyungjo",serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#151A19; --paper-2:#1D2422; --ink:#E3E6E0; --ink-soft:#A9B2AD;
+    --green:#82B39F; --blue:#93B7DB; --seal:#D7887C; --line:#33403B; --surface:#1A201F;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#151A19; --paper-2:#1D2422; --ink:#E3E6E0; --ink-soft:#A9B2AD;
+  --green:#82B39F; --blue:#93B7DB; --seal:#D7887C; --line:#33403B; --surface:#1A201F;
+  color-scheme:dark;
+}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+p,li,td,.lede,.note{text-wrap:pretty}
+h1,h2,h3,h4{text-wrap:balance}
+.cl{display:inline-block;max-width:100%}
+a{color:var(--blue)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* hero */
+header.hero{padding:56px 0 40px;border-bottom:1px solid var(--line)}
+.hero h1{font-family:var(--font-han);font-weight:900;font-size:clamp(2.2rem,6vw,3.6rem);line-height:1.15;margin:0 0 12px;letter-spacing:-.01em}
+.hero .sub{font-size:1.1rem;color:var(--ink-soft);margin:0 0 36px;max-width:52em;text-wrap:balance}
+.variance{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:760px}
+.v-cell{padding:18px 16px 14px;background:var(--surface);border:1px solid var(--line);border-radius:3px}
+.v-han{font-family:var(--font-han);font-weight:700;font-size:clamp(1.5rem,6.4vw,3.4rem);line-height:1.1;display:flex;gap:.04em}
+.v-han .diff{border:2px solid var(--seal);color:var(--seal);padding:0 .06em;border-radius:2px}
+.v-gloss{margin-top:8px;font-size:.95rem}
+.v-place{font-size:.85rem;color:var(--ink-soft)}
+@media (max-width:520px){.variance{gap:8px}.v-cell{padding:12px 8px 10px}.v-han{font-size:7.2vw}.v-gloss{font-size:.85rem}.v-place{font-size:.78rem}}
+.hero .caption{margin:16px 0 0;max-width:52em;color:var(--ink-soft);font-size:.98rem;text-wrap:balance}
+
+/* nav */
+nav.views{position:sticky;top:0;z-index:5;background:var(--paper);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+nav.views{top:env(safe-area-inset-top,0px)}
+.nav-inner{display:flex;flex-wrap:wrap;align-items:center;gap:4px 2px;padding:10px 24px}
+.tab{background:none;border:0;padding:8px 12px;border-radius:3px;cursor:pointer;color:var(--ink-soft);font-size:.98rem}
+.tab[aria-current="page"]{color:var(--ink);background:var(--paper-2);font-weight:700}
+.tab:hover{color:var(--ink)}
+.search{margin-left:auto;display:flex;align-items:center}
+.search input{font:inherit;font-size:.95rem;padding:7px 12px;border:1px solid var(--line);border-radius:3px;background:var(--surface);color:var(--ink);width:200px}
+@media (max-width:720px){.search{margin-left:0;width:100%}.search input{width:100%}}
+
+main{padding:44px 0 80px}
+.lede{max-width:40em;color:var(--ink-soft);margin:0 0 24px}
+h2.section{font-family:var(--font-han);font-weight:700;font-size:1.6rem;margin:0 0 6px}
+
+/* index list */
+.index{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.row{display:grid;grid-template-columns:minmax(150px,220px) 1fr auto;gap:8px 20px;align-items:baseline;padding:16px 4px;border-bottom:1px solid var(--line);cursor:pointer}
+.row:hover{background:var(--surface)}
+.row:focus-visible{outline-offset:-2px}
+.r-name{font-size:1.15rem;font-weight:700}
+.r-han{display:block;font-family:var(--font-han);font-weight:500;color:var(--ink-soft);font-size:1rem}
+.r-core{margin:0}
+.r-meta{display:block;font-size:.85rem;color:var(--ink-soft)}
+.r-badges{display:flex;gap:6px;align-items:center;white-space:nowrap}
+.grade{display:inline-grid;place-items:center;width:28px;height:28px;font-family:var(--font-han);font-weight:900;font-size:.95rem;border:2px solid currentColor;border-radius:3px}
+.g-A{color:var(--green)} .g-B{color:var(--blue)} .g-C{color:var(--seal)}
+.state{font-size:.8rem;padding:2px 8px;border-radius:12px;background:var(--paper-2);color:var(--ink-soft)}
+@media (max-width:720px){.row{grid-template-columns:1fr auto}.r-core-wrap{grid-column:1 / -1;grid-row:2}}
+.cat-head{font-family:var(--font-han);font-weight:700;font-size:1.05rem;margin:32px 0 8px;color:var(--green)}
+.cat-head:first-child{margin-top:0}
+
+/* bundles */
+.bundle{margin:0 0 48px}
+.bundle h3{font-family:var(--font-han);font-size:1.35rem;margin:0 0 4px}
+.bundle .why{color:var(--ink-soft);max-width:42em;margin:0 0 16px}
+.bundle-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.b-card{background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:14px 16px;cursor:pointer;text-align:left}
+.b-card:hover{border-color:var(--green)}
+.b-han{font-family:var(--font-han);font-weight:700;font-size:1.9rem;line-height:1.2}
+.b-place{font-size:.88rem;color:var(--ink-soft)}
+.b-line{font-size:.95rem;margin-top:6px}
+.network{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:.98rem}
+.node{border:1px solid var(--line);background:var(--surface);padding:6px 12px;border-radius:3px;cursor:pointer}
+.node.hub{border:2px solid var(--green);font-weight:700}
+.node.static{cursor:default;color:var(--ink-soft)}
+
+/* table */
+.scroll{overflow-x:auto;margin:8px 0 16px}
+table{border-collapse:collapse;width:100%;font-size:.95rem;min-width:520px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-weight:700;color:var(--ink-soft);font-size:.88rem}
+
+/* detail dialog */
+.scrim{position:fixed;inset:0;background:rgba(10,14,13,.45);z-index:20;display:none}
+.scrim.open{display:block}
+.detail{position:fixed;top:0;right:0;bottom:0;width:min(640px,100%);background:var(--paper);z-index:21;overflow-y:auto;border-left:1px solid var(--line);padding:calc(env(safe-area-inset-top,0px) + 24px) 28px calc(env(safe-area-inset-bottom,0px) + 48px);transform:translateX(100%);transition:transform .22s ease}
+.detail.open{transform:none}
+@media (prefers-reduced-motion:reduce){.detail{transition:none}}
+.d-close{position:sticky;top:0;float:right;background:var(--surface);border:1px solid var(--line);border-radius:3px;padding:4px 12px;cursor:pointer}
+.d-cat{color:var(--green);font-size:.9rem;margin:0}
+.d-name{font-family:var(--font-han);font-weight:900;font-size:2.2rem;line-height:1.2;margin:4px 0 0}
+.d-han{font-family:var(--font-han);font-size:1.4rem;color:var(--ink-soft);margin:0 0 4px}
+.d-place{color:var(--ink-soft);margin:0 0 16px}
+.d-core{font-size:1.15rem;margin:0 0 24px;padding-left:14px;border-left:3px solid var(--green)}
+.detail h4{font-family:var(--font-han);font-size:1.05rem;margin:28px 0 8px}
+.detail ul{margin:0;padding-left:1.2em}
+.detail li{margin:0 0 6px}
+.wonmun{font-family:var(--font-han);font-size:1.25rem;line-height:1.9;background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--seal);padding:12px 16px;margin:0 0 6px;border-radius:2px}
+.wonmun-src{font-size:.85rem;color:var(--ink-soft);margin:0 0 10px}
+.gloss{margin:0 0 2px;font-size:.98rem}
+.note{background:var(--paper-2);padding:12px 14px;border-radius:3px;font-size:.96rem}
+.chip{display:inline-block;margin:0 6px 6px 0;padding:4px 10px;border:1px solid var(--line);border-radius:3px;background:var(--surface);cursor:pointer;font-size:.92rem}
+.chip:hover{border-color:var(--green)}
+a.chip{text-decoration:none;color:var(--ink)}
+.src-list li{font-size:.94rem}
+
+/* findings */
+.finding{margin:0 0 36px}
+.finding h3{font-family:var(--font-han);font-size:1.25rem;margin:0 0 8px}
+
+footer{border-top:1px solid var(--line);padding:28px 0 48px;color:var(--ink-soft);font-size:.92rem}
+footer dl{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;margin:8px 0 16px}
+footer dt{font-family:var(--font-han);font-weight:900}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>이름이 남은 자리</h1>
+    <p class="sub">설화와 옛 문헌 속 지명·자연물·금기·낱말의 유래를, 출처를 앞세워 나란히 놓는 아카이브</p>
+    <div class="variance" aria-label="국사봉의 세 가지 한자 표기">
+      <div class="v-cell">
+        <div class="v-han"><span>國</span><span class="diff">師</span><span>峰</span></div>
+        <div class="v-gloss">나라의 스승</div>
+        <div class="v-place">충북 제천</div>
+      </div>
+      <div class="v-cell">
+        <div class="v-han"><span>國</span><span class="diff">士</span><span>峰</span></div>
+        <div class="v-gloss">나라의 선비</div>
+        <div class="v-place">전북 김제 금산면</div>
+      </div>
+      <div class="v-cell">
+        <div class="v-han"><span>國</span><span class="diff">事</span><span>峰</span></div>
+        <div class="v-gloss">나라의 일</div>
+        <div class="v-place">전북 김제 진봉면</div>
+      </div>
+    </div>
+    <p class="caption">소리는 모두 ‘국사봉’입니다. 같은 김제시 안에서도 두 봉우리의 한자가 다릅니다. 기존 자료는 이런 지명을 하나씩 따로 실을 뿐, 나란히 놓고 보여주지 않습니다.</p>
+    <p class="caption" style="margin-top:10px;font-size:.88rem"><span class="cl">기록은 계속됩니다</span> · <span class="cl">현재 33개 항목 · 2026년 11월 24일 수정</span></p>
+  </div>
+</header>
+
+<nav class="views" aria-label="보기 선택">
+  <div class="wrap nav-inner" id="tabs">
+    <button class="tab" data-view="all">전체</button>
+    <button class="tab" data-view="jimyeong">지명</button>
+    <button class="tab" data-view="jayeon">자연물</button>
+    <button class="tab" data-view="geumgi">금기·속신</button>
+    <button class="tab" data-view="mal">말이 된 이야기</button>
+    <button class="tab" data-view="bundle">나란히 보기</button>
+    <button class="tab" data-view="chulcheon">출처를 따라가 보니</button>
+    <label class="search"><span class="visually-hidden" style="position:absolute;left:-9999px">항목 검색</span><input id="q" type="search" placeholder="이름·한자·지역 검색" autocomplete="off"></label>
+  </div>
+</nav>
+
+<main class="wrap" id="main" tabindex="-1"></main>
+
+<footer>
+  <div class="wrap">
+    <p><strong>출처 등급</strong> — 등급은 이야기의 참거짓이 아니라, 그 이름과 기록을 어디까지 거슬러 확인했는지를 나타냅니다.</p>
+    <dl>
+      <dt class="g-A">A</dt><dd>조선시대 문헌 또는 국가기관이 펴낸 자료에서 확인</dd>
+      <dt class="g-B">B</dt><dd>현지 조사 채록·학술 연구·야사 문헌을 통해 확인</dd>
+      <dt class="g-C">C</dt><dd>근현대에 생긴 이야기이거나, 원래 출처를 아직 확인하지 못함</dd>
+    </dl>
+    <p>전승 상태는 그 이름이나 관습이 지금도 쓰이는지를 나타냅니다. 조사 시점이 다른 경우 항목에 따로 적었습니다.</p>
+    <p>본문은 원자료의 문장을 옮기지 않고 직접 요약했습니다. 조선시대 문헌의 원문만 그대로 실었고, 원문을 가져온 데이터베이스를 함께 적었습니다. 원문 아래 우리말 풀이는 아카이브 작성자가 직접 옮겼으며, 기관의 국역을 참고한 경우 그 사실을 밝혔습니다. 국역 문장 자체는 번역자의 저작물이므로 옮기지 않았습니다. 장소 사진은 옮겨 싣지 않고, 항목마다 카카오맵으로 연결해 지도와 로드뷰를 보게 했습니다. 한국지명유래집(국토지리정보원)은 공공누리 제3유형 자료로, 확인용으로만 참고했습니다.</p>
+    <p><strong>기록은 계속됩니다.</strong> 이 아카이브는 한 번의 기록으로 완성되지 않습니다. 새로운 자료가 발견되거나 기존 내용에 보완이 필요한 경우, 이를 꾸준히 반영하며 기록을 이어갈 예정입니다. 지금의 기록에 머무르지 않고, 앞으로도 계속 채워 나가는 아카이브가 되고자 합니다.<br><span class="cl">아카이브 내용 수정 문의 :</span> <span class="cl">인스타그램 @ireum_jari_archive</span> / <span class="cl">이메일 <a href="mailto:ireum.jari@gmail.com">ireum.jari@gmail.com</a></span></p>
+    <p>현재 33개 항목 · 마지막 수정 2026년 11월 24일</p>
+  </div>
+</footer>
+
+<div class="scrim" id="scrim"></div>
+<aside class="detail" id="detail" role="dialog" aria-modal="true" aria-labelledby="d-name" hidden></aside>
+
+<script>
+const CATS = {
+  jimyeong:{label:"지명", sub:"마을·동네에 붙은 이름"},
+  jayeon:{label:"자연물", sub:"산·고개·바위에 붙은 이름"},
+  geumgi:{label:"금기·속신", sub:"지금도 남은 금기와 그 뿌리"},
+  mal:{label:"말이 된 이야기", sub:"조사한 금기와 설화에서 튀어나온 낱말"}
+};
+
+const ITEMS = [
+/* ---------- 지명 ---------- */
+{id:"jm-mukdong",map:"서울 중랑구 묵동",links:["jm-ssangmun"],cat:"jimyeong",name:"묵동",han:"墨洞",place:"서울 중랑구",grade:"A",state:"전승",
+ stateNote:"현재 행정구역 이름(서울 중랑구 묵동)으로 쓰인다.",
+ core:"인용된 옛 문헌은 모두 옛 이름 ‘송계’를 기록한 것이고, ‘묵동’이라는 이름은 1914년에야 나타난다.",
+ origin:["조선시대 이곳에서 먹을 만들었다는 이야기","문방사우인 먹을 지명에 써야 마을의 학문이 흥한다고 여겼다는 이야기"],
+ note:"조선시대에는 강원도로 가는 관리들이 묵던 국립 여관 송계원(松溪院)이 있어 송계동이라 불렀다. 인용된 문헌 세 종은 모두 송계원·송계교를 기록한 것이다. 유래담이 말하는 ‘조선시대’와 문헌이 가리키는 이름이 서로 다르다.",
+ sources:["한국지명유래집 중부편, 국토지리정보원, 2008","『태종실록』 — 송계원","『해동지도』·『광여도』 — 송계교"],
+ links:["jm-seongbuk"]},
+{id:"jm-seongbuk",map:"서울 성북구 성북동",cat:"jimyeong",name:"성북동",han:"城北洞",place:"서울 성북구",grade:"A",state:"전승",
+ core:"다른 이름이 넷 있고, 그 넷에 저마다 이유가 붙어 있다.",
+ origin:["도성의 북쪽에 있어서","어영청의 군영인 성북둔(城北屯)이 있어서"],
+ variants:[["北渚洞","도성 북쪽 물가","신증동국여지승람"],["桃花洞","복숭아나무를 줄지어 심어서 — 민간에서 부르던 이름","신증동국여지승람"],["北寺洞·墨寺洞","옛날 묵사(墨寺)라는 절이 있어서","신증동국여지승람"]],
+ note:"『신증동국여지승람』이 네 이름과 그 이유를 한 대목 안에서 함께 적었다. 공식 이름과 ‘민간에서 부르는 이름’을 구분해 적은 점도 눈에 띈다.",
+ sources:["한국지명유래집 중부편, 2008","『신증동국여지승람』(1530)","『경조오부도』"],
+ links:["jm-mukdong"]},
+{id:"jm-mokdong",map:"서울 양천구 목동",cat:"jimyeong",name:"목동",han:"木洞",place:"서울 양천구",grade:"A",state:"전승",
+ core:"牧이 木으로 바뀐 뒤, 바뀐 글자에 맞는 이야기가 하나 더 붙었다.",
+ origin:["말을 기르던 목장의 목동(牧童)들이 살던 마을이라 牧洞이었다가 뒤에 木洞이 되었다는 이야기","예로부터 나무가 많아 木洞이라는 이야기"],
+ variants:[["牧洞","목장·목동","유래담"],["木洞","나무","현재 표기"]],
+ note:"두 번째 이야기는 바뀐 뒤의 글자 木을 근거로 삼는다. 어느 쪽이 먼저인지 자료는 말하지 않는다.",
+ sources:["한국지명유래집 중부편, 2008","『호구총수』 — 양천현 남산면"],
+ links:["jm-gocheok","jm-dorim"]},
+{id:"jm-gocheok",map:"서울 구로구 고척동",cat:"jimyeong",name:"고척동",han:"高尺洞",place:"서울 구로구",grade:"A",state:"전승",
+ core:"高坐가 高尺이 된 해가 1895년으로 특정된다.",
+ origin:["높은 곳에 있는 마을 ‘고잘’, 곧 고좌리(高坐里)에서","안양천을 사이에 두고 물건을 바꿀 때 계량기가 없어 긴 자(高尺)로 쟀다는 데서"],
+ variants:[["高坐里","높은 곳의 마을","호구총수 — 조선 후기"],["高尺里","긴 자","1895년 이후"]],
+ note:"두 이야기가 각각 바뀌기 전과 바뀐 뒤의 글자를 근거로 삼는다. 목동과 같은 구조인데, 여기서는 바뀐 해까지 기록에 남았다.",
+ sources:["한국지명유래집 중부편, 2008","『호구총수』 — 부평부 수탄면 고좌리"],
+ links:["jm-mokdong","jm-dorim"]},
+{id:"jm-dorim",map:"서울 영등포구 도림동",cat:"jimyeong",name:"도림동",han:"道林洞",place:"서울 영등포구",grade:"A",state:"전승",
+ core:"네 글자 ‘도야미리’가 두 글자 ‘도림’으로 줄었다.",
+ origin:["들판에 억새 같은 풀이 길가에 숲을 이뤄서","산이 마을을 둘러싸 큰길에서 돌아앉은 모양이라 ‘도야미리’라 하던 것이 도림이 되었다는 이야기"],
+ variants:[["道也味里","돌아앉은 마을","호구총수 — 조선 후기"],["道林","길·숲","현재 표기"]],
+ note:"첫 번째 이야기는 줄어든 뒤의 글자를, 두 번째는 줄기 전의 이름을 근거로 삼는다.",
+ sources:["한국지명유래집 중부편, 2008","『호구총수』 — 금천현 상북면 도야미리","『조선지형도』"],
+ links:["jm-mokdong","jm-gocheok"]},
+{id:"jm-macheon",map:"서울 송파구 마천동",cat:"jimyeong",name:"마천동",han:"馬川洞",place:"서울 송파구",grade:"A",state:"전승",
+ core:"옆의 산 이름에서, 또는 장군의 백마가 마신 샘에서.",
+ origin:["이 지역의 마산(馬山)에서 이름을 따 마천리라 했다는 이야기","임경업 장군이 백마를 타고 지나다 ‘백마물’에서 물을 먹였는데, 가뭄에도 물이 마르지 않았다는 이야기"],
+ note:"두 번째 이야기는 그 일이 왜 ‘마천’이라는 이름이 되었는지는 말하지 않는다.",
+ sources:["한국지명유래집 중부편, 2008","『호구총수』","『조선지형도』"]},
+{id:"jm-yeoksam",map:"서울 강남구 역삼동",cat:"jimyeong",name:"역삼동",han:"驛三洞",place:"서울 강남구",grade:"A",state:"변형",
+ stateNote:"역삼동이라는 이름은 쓰이지만, 이름의 바탕이 된 세 마을 이름 가운데 윗방아다리(지금의 국기원 근처)와 아랫방아다리(역삼초등학교 근방)는 쓰이지 않는다.",
+ core:"말죽거리·윗방아다리·아랫방아다리, 세 마을을 합쳐 ‘역삼’이 되었다.",
+ origin:["역촌이던 말죽거리와 상방하교·하방하교 세 마을을 합쳐 역삼리라 했다는 데서","말죽거리 — 말에게 죽을 먹이던 거리라서","말죽거리 — 이괄의 난(1624) 때 피난하던 인조가 이곳에서 말에 죽을 먹였다는 이야기"],
+ note:"말죽거리는 따로 항목이 없고 역삼동 항목 안에 함께 실려 있다. 이 아카이브의 지명 가운데 역사적 사건과 이어지는 유일한 경우다.",
+ sources:["한국지명유래집 중부편, 2008 — 역삼동 항목","『호구총수』 — 광주군 언주면"]},
+
+/* ---------- 자연물 ---------- */
+{id:"jm-ssangmun",map:"서울 도봉구 쌍문동",cat:"jimyeong",name:"쌍문동",han:"雙門洞",place:"서울 도봉구",grade:"C",state:"전승",
+ stateNote:"쌍문동이라는 이름은 지금도 쓰인다. 이야기 속 효자문 두 개가 실제로 있었는지, 지금 남아 있는지는 자료에 나오지 않는다.",
+ core:"효자문 두 개가 섰다는 이야기는 생생하지만, 그것을 뒷받침하는 문헌은 없다.",
+ origin:["옛날 이 지역에 살던 계성(鷄聲)과 그 부인이 갑자기 세상을 떠나자, 아들이 효도하지 못한 것을 뉘우쳐 묘 앞에서 몇 해를 지내다 죽었고, 마을 사람들이 그 효심을 기려 효자문 두 개를 세워 ‘쌍문’이 되었다는 이야기"],
+ note:"자료는 이 이야기 뒤로 곧장 행정 연혁만 적고, 어떤 문헌도 인용하지 않는다. ‘쌍문리’라는 이름은 1914년 소라리·우이리·계곡리·원당리 일부를 합칠 때 처음 붙었다. 이름이 생긴 시점은 분명한데, 그보다 앞선 ‘옛날’ 이야기를 받쳐 줄 기록은 찾지 못해 C등급으로 둔다. 옛 이름 송계의 기록이 문헌에 남은 묵동과 나란히 보면 등급이 갈리는 이유가 보인다.",
+ sources:["한국지명유래집 중부편, 2008 — 인용 문헌 없음"],
+ links:["jm-mukdong"]},
+{id:"jy-achasan",map:"아차산",cat:"jayeon",name:"아차산",han:"峨嵯山",place:"서울 광진구·중랑구, 경기 구리시",grade:"A",state:"전승",
+ core:"한 산의 표기가 阿旦에서 阿且로, 다시 峨嵯로 바뀐 과정이 문헌에 차례로 남았다.",
+ origin:[],noOrigin:"이름의 유래를 설명하는 이야기는 전하지 않는다.",
+ variants:[["阿旦城","","삼국사기"],["阿且城","","삼국사기"],["峨嵯","","고려사·세종실록지리지"]],
+ note:"『신증동국여지승람』과 『여지도서』에는 봉수 기록이 있다. 북쪽 한이산 봉수의 신호를 받아 남쪽 목멱산(남산)으로 보냈다. 봉화산(중랑구) 항목은 그 봉화대가 봉화산에 있었고, 조선시대 지도는 그곳까지 아차산으로 그렸다고 적는다. 산의 범위가 시대마다 달랐던 셈이다.",
+ sources:["한국지명유래집 중부편, 2008","『삼국사기』","『고려사』","『세종실록지리지』","『경기지』","『신증동국여지승람』","『여지도서』"],
+ links:["jy-muakjae","jy-gaehwasan","jy-beolgogae"],group:"bongsu"},
+{id:"jy-namtaeryeong",map:"남태령",cat:"jayeon",name:"남태령",han:"南泰嶺",place:"서울 관악구 남현동 – 경기 과천",grade:"A",state:"전승",
+ core:"정조가 이름을 정했다는 이야기를, 『춘향전』의 한 구절이 반박한다.",
+ origin:["정조가 화성 융릉에 가던 길에 과천현 이방에게 고개 이름을 묻자, 본래 여우고개이나 요망한 이름이라 ‘삼남대로에서 처음 맞는 큰 고개’라는 뜻으로 남태령이라 답했다는 이야기","관악산을 넘나드는 천년 묵은 여우가 많아 호현(狐峴)·엽시현이라 했다는 이야기"],
+ variants:[["狐峴","여우고개","해동지도·광여도"],["南泰嶺","","여도비지·대동지지·동여도·대동여지도·1872지방지도"]],
+ note:"『춘향전』 어사출두 대목에 이미 ‘남태령을 넘어’라는 구절이 있어, 정조 이전부터 남태령이라 불렸을 것이라고 자료가 추정한다. 고전소설이 지명이 언제부터 쓰였는지를 알려주는 근거가 된 경우다.",
+ sources:["한국지명유래집 중부편, 2008","『해동지도』 「과천현 지도」","『광여도』","『여도비지』·『대동지지』·『동여도』·『대동여지도』","『1872지방지도』 「과천지도」","『일성록』","『춘향전』"]},
+{id:"jy-muakjae",refs:[["『동국여지지』 한성부 봉수", "http://db.itkc.or.kr/inLink?DCI=ITKC_BT_B002A_0020_010_0020_2020_001_XML","毋嶽烽燧"]],map:"무악재",cat:"jayeon",name:"무악재",han:"毋岳재",place:"서울 서대문구 현저동 – 홍제동",grade:"A",state:"전승",
+ core:"다른 이름이 열한 개, 이유도 열한 가지.",
+ origin:["고개를 낀 안산을 무악이라 한 데서","인수봉이 아이를 업고 나가려는 형세를 달래는 어머니 산이라 모악(母岳)","두 봉우리 사이가 말안장 같아 길마재","북쪽에 사현사라는 절이 있어 모래재","영조가 부왕 숙종을 그리며 명릉 쪽을 바라보았다 해서 추모현","무학대사가 자주 넘나들었다 해서 무학재","봉수대가 있는 고개라 봉화재, 소리가 변해 봉우재","호랑이가 자주 나타나 사람을 모아 넘었다 해서 모아재"],
+ wonmun:[["毋嶽烽燧。東峯西應高陽郡所叱達山，南應木覓山第三烽。西峯西應高陽郡蜂峴，南應木覓山第四烽。","『동국여지지』(유형원, 1656년 이후) 권1 한성부 봉수 — 원문: 한국고전번역원 한국고전종합DB","무악 봉수의 동쪽 봉우리는 서쪽으로 고양군 소질달산과, 남쪽으로 목멱산 셋째 봉화와 신호를 주고받는다. 서쪽 봉우리는 서쪽으로 고양군 봉현과, 남쪽으로 목멱산 넷째 봉화와 주고받는다.","우리말 풀이: 아카이브 작성자 (한국고전번역원 국역 참고)"]],
+ note:"원문은 毋嶽, 지명유래집은 毋岳으로 적는다. 뜻이 같은 다른 글자다. 무악의 서쪽 봉우리는 고양군 봉현(蜂峴)과 봉화를 주고받았다. 설화 속 ‘벌아령’은 『동국여지비고』의 금표 경계에 ‘벌아현(伐兒峴)’이라는 실제 지명으로 나온다.",
+ sources:["한국지명유래집 중부편, 2008","『조선왕조실록』 연산 10년 8월","『세종실록지리지』","『동국여지지』 한성부 봉수","『동국여지비고』 한성부 산천"],
+ links:["jy-beolgogae","jy-achasan"],group:"bongsu"},
+{id:"jy-mangu",map:"망우리고개",cat:"jayeon",name:"망우리고개",han:"忘憂고개",place:"서울 중랑구 망우동 – 경기 구리시",grade:"A",state:"전승",
+ core:"‘근심을 잊는 고개’라는 이야기를, 자료가 스스로 전설이라고 밝힌다.",
+ origin:["태조가 무학대사가 고른 자신의 묏자리를 보고 돌아가던 길에 이 고개에서 ‘이제야 근심을 잊겠다’ 했다는 이야기"],
+ variants:[["亡兀里","","세조실록"],["網兀里","","중종실록"],["忘憂","","숙종실록"]],
+ note:"자료는 왕릉 터가 태조 사후에 정해졌으므로 이 유래가 전설로만 여겨진다고 덧붙인다. 실록 세 종이 같은 이름을 모두 다른 한자로 적었다.",
+ sources:["한국지명유래집 중부편, 2008","『세조실록』","『중종실록』","『숙종실록』","『여지도서』","『해동지도』"]},
+{id:"jy-arirang",map:"아리랑고개",cat:"jayeon",name:"아리랑고개",han:"",place:"서울 성북구 돈암동 – 정릉동",grade:"C",state:"변형",
+ stateNote:"옛 이름 정릉고개는 쓰이지 않고 아리랑고개로 바뀌었다.",
+ core:"1930년대, 정릉고개가 아리랑고개가 되었다.",
+ origin:["1935년 무렵 요리업자들이 정릉 일대의 요정 손님을 끌려고 민요 ‘아리랑’을 딴 표목을 세웠다는 이야기","민족정신을 담은 영화 ‘아리랑’을 이곳에서 찍었다는 이야기"],
+ note:"근현대에 생긴 이름이라 조선시대 문헌이 없다. 같은 이름에 상업적인 이야기와 민족적인 이야기가 함께 붙어 있다. 어느 쪽이 사실인지는 자료도 가리지 않는다.",
+ sources:["한국지명유래집 중부편, 2008"]},
+{id:"jy-heoga",map:"허가바위",cat:"jayeon",name:"허가바위",han:"",place:"서울 강서구 가양동",grade:"A",state:"전승",
+ core:"구멍 뚫린 바위 하나가 고을·나루·동네의 이름을 낳았다.",
+ origin:["바위에 구멍이 뚫려 있어 공암(孔巖) 또는 허가바위라 했다는 데서"],
+ variants:[["孔巖","구멍 바위","이칭"]],
+ note:"『신증동국여지승람』이 ‘물 가운데 선 바위에 구멍이 있어 이름이 되었다’고 유래를 직접 적었다. 바위 이름은 신라 때 고을 이름 공암, 나루 이름 공암진을 거쳐 지금의 가양동에 이른다. ‘허가’라는 이름의 유래는 전하지 않는다. 바로 옆 광주바위에는 경기도 광주에서 홍수에 떠내려왔다는 이야기가 있다.",
+ sources:["한국지명유래집 중부편, 2008","『신증동국여지승람』","『팔도군현지도』","『조선지도』","『광여도』"],
+ links:["jy-gwangju"]},
+{id:"jy-gwangju",map:"광주바위",cat:"jayeon",name:"광주바위",han:"",place:"서울 강서구 가양동",grade:"C",state:"전승",
+ stateNote:"자료에 따르면 바위는 옛 모습 그대로 남아 있고, 지금은 가양동 아파트 단지 안 구암공원의 중심이 되었다. 다만 올림픽대로가 놓이며 둘레 경관은 많이 바뀌었다.",
+ core:"바로 옆 허가바위는 문헌 넷이 받치고, 이 바위는 전설 하나만 남았다.",
+ origin:["‘넓은 들’을 뜻하는 ‘광주’에서 이름이 붙었다는 설명","본래 경기도 광주에 있던 바위가 큰 홍수에 이곳까지 떠내려왔다는 전설"],
+ note:"공암나루 끝 한강가, 탑산 바로 옆에 두 개의 바위가 물속에 서 있다. 두 설명이 같은 ‘광주’를 한쪽은 넓은 들이라는 보통명사로, 한쪽은 경기도 광주라는 땅 이름으로 읽는다. 인용된 문헌은 없다. 같은 나루, 같은 쪽에 실린 허가바위는 『신증동국여지승람』을 비롯한 문헌 네 종이 받쳐 A등급이다. 두 바위를 나란히 놓으면 등급이 무엇을 말하는지 바로 드러난다.",
+ sources:["한국지명유래집 중부편, 2008 — 인용 문헌 없음"],
+ links:["jy-heoga"]},
+{id:"jy-beolgogae",refs:[["『동국여지지』 한성부 봉수", "http://db.itkc.or.kr/inLink?DCI=ITKC_BT_B002A_0020_010_0020_2020_001_XML","毋嶽烽燧"]],map:"고양시 덕양구 용두동 벌고개",cat:"jayeon",name:"벌고개",han:"罰峴 · 蜂峴",place:"서울 은평구 갈현동 – 경기 고양 서오릉",grade:"A",state:"전승",
+ stateNote:"지명유래집은 ‘고개의 옛 이름’이라고 적었지만, 지도 검색(2026년 11월)에서는 고개 너머 경기 고양시 덕양구 용두동 지점에 ‘벌고개’가 나온다. 서울 갈현동 쪽이 아니라 서오릉이 있는 고양 쪽에 이름이 남은 셈이다. 전남 나주 반남면에도 같은 이름이 있으나 별개의 장소다.",
+ core:"같은 소리 ‘벌’을 罰과 蜂으로 적고, 글자마다 다른 이야기가 붙었다.",
+ origin:["경릉의 청룡에 해당해 지반이 깎일까 통행을 막고, 어기면 큰 벌(罰)을 주었다는 이야기","숙종 하관 때 명을 어긴 이에게 벌(蜂) 떼가 달려들었다는 이야기","세조가 이곳에서 범 사냥을 지켜보았다는 기록"],
+ variants:[["罰峴","형벌","통행 금지 이야기"],["蜂峴","벌레 벌","벌 떼 이야기·실록"]],
+ wonmun:[["幸蜂峴, 觀打圍。","『세조실록』 36권, 세조 11년(1465) 8월 12일 — 원문: 국사편찬위원회 조선왕조실록","임금이 봉현에 가서 사냥하는 것을 지켜보았다.","우리말 풀이: 아카이브 작성자","https://sillok.history.go.kr/id/kga_11108012_002"],["幸高陽縣 蜂峴","『세조실록』 9권, 세조 3년(1457) 10월 14일 — 원문: 국사편찬위원회 조선왕조실록","임금이 고양현 봉현에 갔다.","우리말 풀이: 아카이브 작성자","https://sillok.history.go.kr/id/kga_10310014_001"]],
+ note:"실록에 ‘고양현 봉현’이 나오고, 『동국여지지』는 무악 서쪽 봉우리가 고양군 봉현과 봉화를 주고받았다고 적는다. 지역과 방향이 맞고, 지금 지도에서도 벌고개가 고양 쪽에 잡힌다. 그래도 실록의 봉현이 이 고개와 같은 지점인지는 확인되지 않았다. 지명유래집은 범 사냥을 8월 6일로 적었으나 실록은 12일이다. 같은 갈현동의 박석고개처럼, 왕릉의 지맥을 지키려는 풍수 논리가 깔려 있다.",
+ sources:["한국지명유래집 중부편, 2008","『세조실록』","『동국여지지』 한성부 봉수"],
+ links:["jy-muakjae"],group:"bongsu"},
+{id:"jy-gaehwasan",map:"개화산",cat:"jayeon",name:"개화산",han:"開花山",place:"서울 강서구",grade:"A",state:"전승",
+ core:"도를 닦던 이가 죽은 자리에 꽃이 피어, 주룡산이 개화산이 되었다.",
+ origin:["신라 때 주룡선생이 이 산에서 도를 닦아 주룡산(駐龍山)이라 했다는 이야기","주룡선생이 죽은 뒤 그 자리에 꽃 한 송이가 피어 개화산이라 했다는 이야기"],
+ variants:[["駐龍山","","조선시대 이름"],["開花山","","현재 이름"]],
+ note:"『양천읍지』는 코끼리 모양의 개화산과 사자 모양의 행주산이 한강을 사이에 두고 마주 보며 서해로 드는 액운을 막는다고 적는다. 『신증동국여지승람』에는 개화산 봉수가 동쪽으로 목멱산 제5봉과 응한다고 나온다. 근처 방화동(傍花洞)이라는 이름도 ‘개화산 옆’이라는 데서 왔다.",
+ sources:["한국지명유래집 중부편, 2008","『양천읍지』","『신증동국여지승람』"],
+ links:["jy-achasan","jy-muakjae"],group:"bongsu"},
+{id:"jy-guksa-jecheon",map:"제천 국사봉",cat:"jayeon",name:"국사봉",han:"國師峰",place:"충북 제천",grade:"A",state:"전승",group:"guksa",
+ core:"한자는 ‘나라의 스승’인데, 이야기는 ‘절하는 봉우리’다.",
+ origin:["단종의 신하였던 유안례가 단종이 영월로 유배되자 능골에 살며 초하루와 보름마다 국궁사배했고, 그가 바라보며 절한 봉우리라 하여 국사봉"],
+ note:"한자 國師(나라의 스승)와 유래담의 ‘국궁사배’가 서로 다른 것을 가리킨다. 소리를 적은 이름에 뒤에 이야기가 붙은 것으로 볼 수 있다.",
+ sources:["한국지명유래집 충청편, 2009","『여지도서』","『조선지도』","『1872년지방지도』"],
+ links:["jy-guksa-geumsan","jy-guksa-jinbong"]},
+{id:"jy-guksa-geumsan",map:"김제 금산면 국사봉",cat:"jayeon",name:"국사봉",han:"國士峰",place:"전북 김제 금산면",grade:"A",state:"전승",group:"guksa",
+ core:"선비가 많이 난 고장의 봉우리.",
+ origin:["주변 마을에서 선비가 많이 배출되었다는 데서"],
+ note:"모악산 남쪽 능선에 있다. 산골짜기마다 천주교 박해 때 경기·충청에서 피신해 온 신자들의 마을이 남아 있다. 같은 김제시 진봉면의 국사봉은 國事峰으로 적는다.",
+ sources:["한국지명유래집 전라·제주편, 2010","『조선지형도』"],
+ links:["jy-guksa-jecheon","jy-guksa-jinbong"]},
+{id:"jy-guksa-jinbong",map:"김제 진봉면 국사봉",cat:"jayeon",name:"국사봉",han:"國事峰",place:"전북 김제 진봉면",grade:"A",state:"전승",group:"guksa",
+ core:"같은 김제시 안에서, 다른 한자를 쓰는 국사봉.",
+ origin:[],noOrigin:"자료에 유래가 실려 있지 않다.",
+ note:"만경강이 서해와 만나는 곳, 나성산과 진봉산 사이의 낮은 봉우리다. 옛 지도에는 이름이 없고 『조선지형도』에 처음 보인다.",
+ sources:["한국지명유래집 전라·제주편, 2010","『조선지형도』"],
+ links:["jy-guksa-jecheon","jy-guksa-geumsan"]},
+{id:"jy-nogo-mapo",map:"마포 노고산",cat:"jayeon",name:"노고산",han:"老姑山",place:"서울 마포구",grade:"A",state:"전승",group:"halmi",
+ core:"‘한양의 꼬리’가 ‘할미’가 되었다.",
+ origin:["한양 서쪽 끝에 있는 산이라 한미산(漢尾山)이라 하던 것이 할미산으로 잘못 전해지고, 이를 한자로 옮겨 노고산이 되었다는 이야기"],
+ variants:[["漢尾山","한양의 꼬리","유래담"],["老古山","","대동여지도·수선전도·대동지지"],["老姑山","늙은 시어미","현재 표기"]],
+ note:"원래 ‘할미’와 상관없던 이름이, 소리가 바뀐 뒤 그 소리에 맞춰 한자가 다시 붙었다. 이름의 뜻이 도중에 뒤집힌 셈이다.",
+ sources:["한국지명유래집 중부편, 2008","『대동여지도』","「수선전도」","『대동지지』"],
+ links:["jy-nogo-yeongdong","jy-daemosan"]},
+{id:"jy-nogo-yeongdong",map:"영동 노고산",cat:"jayeon",name:"노고산",han:"老高山",place:"충북 영동 양산면",grade:"A",state:"전승",group:"halmi",
+ core:"자료 스스로 ‘고’ 자를 高로 다르게 적는다고 짚는다.",
+ origin:[],noOrigin:"이름의 유래를 직접 설명하지는 않는다.",
+ note:"조선시대 지리지와 고지도에는 없고 『조선지지자료』에 老姑山으로 처음 실렸다. 지금은 高를 쓴다. 『한국지명총람』에는 노고성(老姑城)과 옛 절 노고사(老姑寺)가 함께 나온다.",
+ sources:["한국지명유래집 충청편, 2009","『조선지지자료』","『한국지명총람』"],
+ links:["jy-nogo-mapo","jy-daemosan"]},
+{id:"jy-daemosan",map:"대모산",cat:"jayeon",name:"대모산",han:"大母山",place:"서울 강남구",grade:"A",state:"전승",group:"halmi",
+ core:"할미에서 시어미로, 다시 왕명으로 어미가 되었다.",
+ origin:["산 모양이 늙은 할미 같아 할미산 또는 대고산(大姑山)이라 하다가, 태종의 헌릉이 들어선 뒤 왕명으로 대모산이라 했다는 이야기"],
+ variants:[["大姑山","큰 시어미","옛 이름"],["大母山","큰 어미","현재 이름"]],
+ note:"왕릉이 있는 산에 더 높은 뜻의 글자를 쓰도록 이름이 바뀐 경우다. 서쪽으로 구룡산이 이어진다.",
+ sources:["한국지명유래집 중부편, 2008","『신증동국여지승람』 광주목","『산경표』","『여지도서』"],
+ links:["jy-nogo-mapo","jy-nogo-yeongdong"]},
+
+/* ---------- 금기·속신 ---------- */
+{id:"gs-geumjul",refs:[["민속대백과 「금줄」 류종목", "https://folkency.nfm.go.kr/topic/detail/1824"], ["민속대백과 「금줄」 배영동", "https://folkency.nfm.go.kr/topic/detail/64"], ["민속대백과 「삼칠일」 구미래", "https://folkency.nfm.go.kr/topic/detail/2311"], ["민속대백과 「삼칠일」 한양명", "https://folkency.nfm.go.kr/topic/detail/223"], ["부산 「삼칠 의례」", "http://busan.grandculture.net:443/Contents?local=busan&dataType=99&contents_id=GC04203546"]],cat:"geumgi",name:"금줄",han:"",place:"전국 — 지역마다 다름",grade:"B",state:"변형",
+ stateNote:"부산 조사(1990년대)에서 금줄을 치는 집은 찾기 어렵지만, 산모와 아기를 위해 부정한 일을 꺼리는 마음은 남아 있다고 했다.",
+ core:"같은 금줄에, 지역마다 다른 물건이 걸린다.",
+ origin:["아기가 태어나면 삼칠일(21일) 동안 대문에 쳐서, 바깥의 부정이 들지 못하게 하고 출산을 알렸다","평소와 반대로 꼰 왼새끼를 써서 잡귀를 쫓았다"],
+ table:{head:["지역","아들","딸·그 밖"],rows:[
+   ["충남","숯·고추","숯·솔잎 또는 목화 / 내포 일부는 일곱 이레까지"],
+   ["충북 옥천·제천","짚 방망이 / 돌멩이","오래 두면 아기가 말을 늦게 배운다"],
+   ["전남","고추·숯·백지·연필","고추 대신 솔잎"],
+   ["전북 전주","숯·고추·짚 뭉치","‘쌈줄’이라 부름 / 딸을 낳으면 다음 아들을 바라며 아들 금줄"],
+   ["경남·부산","미역","부산 두구동은 숯·고추·미역"],
+   ["경북 일부","큰 돌",""],
+   ["경기 동북부","금줄","딸은 솔가지를 꽂는 송침(강원 영향)"],
+   ["제주","고추","숯 / 본래 금줄을 치지 않았음"]]},
+ note:"금줄을 오래 두지 말라는 금기도 지역마다 이유가 다르다. 충북은 아기가 말을 늦게 배운다, 광양은 훗날 배우자를 고르지 못한다, 부산 두구동은 말이 더디고 울음이 길어진다고 했다. 고추는 붉은색이 귀신을 쫓는다는 뜻이었으나 점차 ‘아들’의 상징이 되었고, 고추가 금줄에 꽂히기 시작한 것은 재배가 널리 퍼진 18세기 이후로 본다.",
+ sources:["한국민속대백과사전 「금줄」 — 류종목(마을신앙), 배영동(일생의례)","한국민속대백과사전 「삼칠일」 — 구미래(가정신앙), 한양명(일생의례)","부산역사문화대전 「삼칠 의례」 — 두구동 조사(1993)","국립문화재연구소 『한국인의 일생의례』(2009~2011)"],
+ links:["gs-sontop"]},
+{id:"gs-sontop",refs:[["부산 일상 금기", "http://busan.grandculture.net:443/Contents?local=busan&dataType=99&contents_id=GC04210620"], ["부산 세시 금기", "http://busan.grandculture.net:443/Contents?local=busan&dataType=99&contents_id=GC04210618"], ["부산 「삼칠 의례」", "http://busan.grandculture.net:443/Contents?local=busan&dataType=99&contents_id=GC04203546"], ["민속대백과 「금기」 김지욱", "https://folkency.nfm.go.kr/topic/detail/1815"]],cat:"geumgi",name:"손톱",han:"",place:"부산 기장·두구동·가덕도 등, 어촌",grade:"B",state:"전승",
+ stateNote:"부산 조사(1990년대) 당시 기장군 일대에서는 여전히 생활 규범으로 지켰다.",
+ core:"깎는 때와 버리는 곳을 따지는 금기가 네 겹으로 남았다.",
+ origin:["손톱과 발톱에 사람의 정령이 깃든다고 여긴 데서","상례 때 죽은 이의 손톱·발톱·머리카락을 조발랑에 담아 관에 넣던 것과 맥을 같이한다"],
+ table:{head:["때","금기","어기면"],rows:[
+   ["식전","손톱을 깎지 않는다","하루 종일 재수가 없다"],
+   ["밤","손톱을 깎지 않는다","부모 임종을 못 보거나 귀신이 따라온다"],
+   ["깎은 뒤","손톱과 발톱을 한데 섞지 않는다","남에게 천대받는다"],
+   ["설날","손톱을 깎지 않는다","복이 달아난다"],
+   ["출산 후","첫이레가 지나 깎은 아기 손톱은 변소에 버리거나 불에 넣는다","그 손톱을 먹은 닭을 먹으면 풍이 세어진다"],
+   ["배고사 전","선주 부부는 머리와 손톱을 깎지 않는다",""]]},
+ note:"밤에 손톱을 깎으면 쥐가 손톱을 먹고 사람으로 둔갑한다는 이야기도 널리 알려져 있다. 같은 금기에 지역과 자료마다 다른 결과가 붙는다.",
+ sources:["부산역사문화대전 「일상생활과 관련된 금기」·「세시 명절과 관련된 금기」·「삼칠 의례」 — 부산대 현지조사(1993~2002)","한국민속대백과사전 「금기」 — 김지욱(가정신앙)"],
+ links:["gs-geumjul","gs-hwiparam"]},
+{id:"gs-hwiparam",refs:[["부산 일상 금기", "http://busan.grandculture.net:443/Contents?local=busan&dataType=99&contents_id=GC04210620"], ["민속대백과 「어로금기」", "https://folkency.nfm.go.kr/topic/detail/9479"], ["민속대백과 「금기」 김지욱", "https://folkency.nfm.go.kr/topic/detail/1815"]],cat:"geumgi",name:"휘파람",han:"",place:"부산, 어촌",grade:"B",state:"전승",
+ core:"휘파람은 뱀과 귀신을 부르는 소리다.",
+ origin:["귀신은 주로 밤에 움직이고, 무당이 휘파람을 불어 신을 부르는 것과 맥을 같이한다"],
+ table:{head:["언제","어기면","출처"],rows:[
+   ["밤에","집에 뱀이 들어오거나 귀신이 온다","부산 일상 금기"],
+   ["고기 잡는 배 위에서","귀신이나 뱀을 부른다","어로금기"],
+   ["배가 바다로 나갈 때","액귀가 따라붙는다","가정신앙 금기"]]},
+ note:"결과는 거의 같고, 금하는 상황이 다르다. 휘파람을 ‘부르는 소리’로 보는 생각은 자료마다 같다.",
+ sources:["부산역사문화대전 「일상생활과 관련된 금기」","한국민속대백과사전 「어로금기」 — 정연학","한국민속대백과사전 「금기」 — 김지욱"],
+ links:["gs-eoro","gs-sontop"]},
+{id:"gs-mulbap",refs:[["부산 세시 금기", "http://busan.grandculture.net:443/Contents?local=busan&dataType=99&contents_id=GC04210618"], ["『지봉유설』 권1 시령부 절서 원문", "http://db.itkc.or.kr/inLink?DCI=ITKC_GO_1304A_0030_020_0020_2000_001_XML", "怛忉"]],cat:"geumgi",name:"정월 보름 물밥",han:"",place:"부산 기장·두구동·가덕도·산성 마을",grade:"B",state:"전승",
+ stateNote:"부산대 현지조사(1990년대) 기준.",
+ core:"같은 금기에, 마을마다 다른 벌이 따른다.",
+ origin:["새해를 경사롭게 맞기 위해 정초에 부정한 일을 금한 데서"],
+ table:{head:["마을","정월 보름날 물에 밥을 말아 먹으면"],rows:[
+   ["기장군","한 해 내내 물밥을 먹거나 한 해를 허겁지겁 보낸다"],
+   ["두구동·가덕도","풀쐐기에 쏘이거나 몸에 비루가 오른다"],
+   ["산성 마을","여름에 소나기를 만나거나 더위를 탄다"]]},
+ wonmun:[["每歲首辰午亥子日。設祭祈禳。禁百事。相與遊樂。謂之怛忉。","『지봉유설』 권1 시령부 절서(1633 간행) — 원문: 한국고전번역원 한국고전종합DB","(신라 때) 해마다 정초의 첫 진일·오일·해일·자일에 제사를 지내 재앙을 막아 달라 빌고, 모든 일을 멈추고 함께 놀며 즐겼다. 이를 달도라 한다.","우리말 풀이: 아카이브 작성자","http://db.itkc.or.kr/inLink?DCI=ITKC_GO_1304A_0030_020_0020_2000_001_XML"]],
+ note:"『지봉유설』은 여기에 『여지승람』을 끌어와 달도를 ‘슬퍼하고 근심하며 금기한다’는 뜻이라고 덧붙인다. 같은 날을 한쪽은 즐기는 날로, 한쪽은 근심하는 날로 설명한다. 『지봉유설』이 신일(愼日)로 꼽은 정월 첫 쥐날은, 부산에서 ‘쥐날에 구멍을 뚫지 않는다’는 금기로 남아 있었다.",
+ sources:["부산역사문화대전 「세시 명절과 관련된 금기」 — 부산대 현지조사(1993~1999)","『지봉유설』 권1 시령부 절서(1633 간행)"]},
+{id:"gs-misin",cat:"geumgi",name:"미신 타파 운동",han:"",place:"제주",grade:"B",state:"해당 없음",
+ stateNote:"금기가 아니라, 민간 신앙이 줄어든 시대 배경을 다룬 항목이다.",
+ core:"제주에 100곳이 넘던 당이 20~30곳으로 줄었다.",
+ origin:["일제강점기에 시작되어 이승만 정권기를 거쳐 1970년대 새마을운동 때 본격화되었다"],
+ note:"관청은 당굿을 멈추게 하고, 신당을 헐어 새마을 사업 성과로 보고했다. 무당에게 굿을 하지 않겠다는 각서를 받거나, 소음을 구실로 연행하기도 했다. 그러나 마을 사람들이 힘을 모아 당을 지키거나 다시 고친 곳도 있다. 자료는 당을 중심으로 한 신앙은 줄었지만, 그 정서는 집안의 신앙으로 가라앉거나 다른 모습으로 이어졌다고 맺는다. 부산의 금줄 기록과 같은 모습이다.",
+ sources:["디지털제주문화대전 「미신 타파 운동」","조성윤, 「산업 사회의 무당」(1998)","하순애, 「제주도 민간 신앙의 구조와 변화상」(2003)"],
+ links:["gs-eoro","gs-geumjul"]},
+{id:"gs-eoro",refs:[["민속대백과 「어로금기」", "https://folkency.nfm.go.kr/topic/detail/9479"]],cat:"geumgi",name:"어로금기",han:"",place:"동남해안·경기 서해 어촌",grade:"B",state:"소멸",
+ stateNote:"자료가 대부분 사라졌다고 직접 적는다.",
+ core:"배가 쇠로 바뀌자, 쥐를 살려두던 금기가 사라졌다.",
+ origin:["어부들에게 금기는 종교처럼 지키는 규율이었고, 특히 첫 출어를 앞두고 엄했다"],
+ table:{head:["사라진 금기","왜"],rows:[
+   ["배에 사는 쥐를 죽이지 않는다","쇠나 FRP로 만든 배는 쉽게 부서지지 않아, 난파를 미리 알린다는 쥐의 쓸모가 없어졌다"],
+   ["떠내려온 시신을 건져 장사 지낸다","이제는 해경에 신고해야 한다"],
+   ["여자가 배에 오르지 않는다","부부가 함께 고기를 잡는 일이 흔해졌다"],
+   ["첫 출어 날짜를 띠 동물로 가린다","대부분 사라졌다"]]},
+ note:"금기가 왜 사라졌는지를 자료가 직접 밝힌 유일한 경우다. 미신 타파 운동이 바깥의 압력으로 신앙을 줄였다면, 여기서는 기술·제도·생활이 바뀌며 금기가 쓸모를 잃었다.",
+ sources:["한국민속대백과사전 「어로금기」 — 정연학","류종목, 「부산지방의 어로속신 고」(1978)","국립민속박물관 『경남 어촌민속지』(2002)"],
+ links:["gs-misin","gs-hwiparam"]},
+
+/* ---------- 말이 된 이야기 ---------- */
+{id:"eh-judang",cat:"mal",name:"주당",han:"周堂",place:"",grade:"B",state:"변형",
+ stateNote:"‘주당 맞다’, ‘주당살’이라는 말은 사전에 남아 있다. 지금 ‘주당’은 대개 술꾼을 뜻하는데, 그것은 한자가 다른 酒黨이다.",
+ core:"같은 ‘주당’이, 부산에서는 뒷간 귀신이고 사전에서는 혼례 귀신이다.",
+ origin:["혼인 때 꺼리는 귀신. 신부가 신행 오는 달이 큰달인지 작은달인지에 따라 주당이 닿는 자리가 달라진다","주당이 닿은 자리에 있는 사람은 신부가 들어올 때 피하게 했다 — 주당물림"],
+ table:{head:["자료","주당은","피하는 법"],rows:[
+   ["우리말샘, 한국민속대백과사전 「살」(이필영)","혼례 때 꺼리는 귀신. 달의 크기에 따라 자리가 바뀜","처마 밑 사람들을 피하게 하는 주당물림"],
+   ["부산 일상 금기","변소의 ‘정낭 주당’, 노하면 사람을 해치는 ‘주당 각시’","변소 앞에서 헛기침을 한다"],
+   ["한국민속대백과사전 「금줄」(류종목)","뒷간에 있다는 신","헛기침을 하며 왼발부터 들인다"]]},
+ note:"사전과 부산 자료가 같은 이름으로 서로 다른 자리의 귀신을 말한다. 국사봉처럼 같은 소리 아래 다른 내용이 겹친 경우다. 말로는 ‘주당(을) 맞다’와, 주당을 잘못 건드려 받는 액운인 ‘주당살(周堂煞)’이 남았다. 한국민속대백과사전에는 주당을 물리는 의례로 「주당 물리는 소리」, 「주당풀이」가 따로 실려 있다.",
+ sources:["우리말샘 「주당」·「주당살」(국립국어원)","한국민속대백과사전 「살」 — 이필영","한국민속대백과사전 「주당 물리는 소리」·「주당풀이」","부산역사문화대전 「일상생활과 관련된 금기」","한국민속대백과사전 「금줄」 — 류종목"],
+ refs:[["우리말샘 「주당」","https://opendict.korean.go.kr/dictionary/view?sense_no=434562&viewType=confirm"],["우리말샘 「주당살」","https://opendict.korean.go.kr/dictionary/view?sense_no=275006&viewType=confirm"],["민속대백과 「살」","https://folkency.nfm.go.kr/topic/detail/2272"],["민속대백과 「주당 물리는 소리」","https://folkency.nfm.go.kr/topic/detail/974"],["민속대백과 「주당풀이」","https://folkency.nfm.go.kr/topic/detail/2825"]],
+ links:["gs-geumjul"]},
+{id:"eh-maegu",cat:"mal",name:"매구",han:"",place:"",grade:"B",state:"전승",
+ stateNote:"부산 기장군 조사(1990년대) 당시 금기 속에 쓰였다.",
+ core:"천 년 묵은 여우가 변해 된다는 짐승. 기장에서는 새벽에 거울을 보면 매구가 된다고 했다.",
+ origin:["천 년 묵은 여우가 변하여 된다는 전설 속 짐승(우리말샘)","부산 기장군: 새벽에 거울을 보면 빨리 늙거나 매구가 된다","남태령: 관악산을 넘나드는 천년 묵은 여우가 많아 호현·엽시현이라 했다"],
+ note:"우리말샘의 뜻풀이를 따르면, 기장 금기의 ‘매구’와 남태령의 ‘천년 묵은 여우’는 같은 존재를 가리킨다. 다만 두 자료가 서로를 언급하지는 않는다. 한국민속대백과사전에는 여우 매구 항목이 없고, 전라도 등에서 풍물굿을 부르는 ‘매구’만 있다. 소리가 같은 다른 말이다.",
+ sources:["우리말샘 「매구」(국립국어원)","부산역사문화대전 「일상생활과 관련된 금기」","한국지명유래집 중부편, 2008 — 남태령"],
+ refs:[["우리말샘 「매구」","https://opendict.korean.go.kr/dictionary/view?sense_no=331408&viewType=confirm"],["부산 일상 금기","http://busan.grandculture.net:443/Contents?local=busan&dataType=99&contents_id=GC04210620"]],
+ links:["jy-namtaeryeong","gs-sontop"]},
+{id:"eh-samchil",cat:"mal",name:"삼칠일",han:"三七日",place:"",grade:"A",
+ wonmun:[["時神遺霊艾一炷蒜二十枚曰, ‘爾軰食之不見日光百日, 便得人形.’ 熊虎得而食之忌三七日熊得女身, 虎不能忌而不得人身.","『삼국유사』 권1 기이(紀異) 「고조선(왕검조선)」 — 원문: 국사편찬위원회 한국사데이터베이스","그때 신(환웅)이 신령한 쑥 한 줌과 마늘 스무 개를 주며 말했다. ‘너희가 이것을 먹고 백 일 동안 햇빛을 보지 않으면 곧 사람의 모습을 얻으리라.’ 곰과 범이 받아먹고 삼칠일 동안 금기하자 곰은 여자의 몸을 얻었고, 범은 금기를 지키지 못해 사람의 몸을 얻지 못했다.","우리말 풀이: 아카이브 작성자","https://db.history.go.kr/id/sy_001_0020_0020_0020"]],state:"전승",
+ core:"곰이 사람이 된 기간이, 아기를 지키는 기간이 되었다.",
+ origin:["『삼국유사』 고조선조: 환웅이 백 일 동안 햇빛을 보지 말라 했고, 곰은 삼칠일 만에 여자가 되었다","아기가 태어나면 삼칠일 동안 대문에 금줄을 치고 금기를 지켰다"],
+ table:{head:["분류와 집필자","삼칠일을 무엇으로 보는가","단군신화를 이렇게 요약"],rows:[
+   ["가정신앙 — 구미래","3과 7이라는 신성한 수가 겹친, 금기를 지키는 신성한 기간","백 일을 채우기 전, 삼칠일 만에 곰이 여자가 되었다"],
+   ["일생의례 — 한양명","일상에서 떨어져 나왔다가 공동체로 돌아오는 통과의례의 한 과정","삼칠일 동안 금기를 지킨 곰이 여자가 되었다"]]},
+ note:"왜 『삼국유사』 「고조선」조인가 — 『삼국유사』는 고려 승려 일연이 13세기 후반에 엮은 책으로, 첫머리 「기이(紀異)」편은 ‘기이한 일을 적는다’는 이름대로 나라를 처음 세운 이들의 신이한 이야기를 모았다. 그 첫 조가 「고조선(왕검조선)」이고, 일연은 여기에 『고기(古記)』를 끌어와(古記云) 단군의 탄생을 적었다. 지금 전하는 단군신화 가운데 가장 이른 기록이라, 삼칠일을 다루는 사전 항목들도 모두 이 대목을 출발점으로 삼는다. 원문을 보면 환웅이 내건 조건은 ‘백 일(不見日光百日)’이고, 곰과 범이 실제로 금기한 기간은 ‘삼칠일(忌三七日)’이다. 두 숫자가 한 대목에 잇달아 나오기 때문에, 같은 사전의 두 집필자가 각자 주목하는 숫자를 앞세웠다. 진표율사가 삼칠일을 기약해 도를 닦은 이야기(『삼국유사』), 석가모니가 깨달음 뒤 삼칠일 동안 『화엄경』을 설했다는 이야기처럼, 삼칠일은 출산 말고도 중요한 일을 이루는 기간으로 쓰였다. ‘삼칠일 안에 못을 박으면 삼신이 노한다’ 같은 속신도 남았다.",
+ sources:["한국민속대백과사전 「삼칠일」 — 구미래(가정신앙)","한국민속대백과사전 「삼칠일」 — 한양명(일생의례)","『삼국유사』 권1 기이 「고조선(왕검조선)」"],
+ refs:[["민속대백과 「삼칠일」 구미래","https://folkency.nfm.go.kr/topic/detail/2311"],["민속대백과 「삼칠일」 한양명","https://folkency.nfm.go.kr/topic/detail/223"]],
+ links:["gs-geumjul"]},
+{id:"eh-hamheung",refs:[["『연려실기술』 「태조의 함흥 주필」", "http://db.itkc.or.kr/inLink?DCI=ITKC_BT_1300A_0020_010_0100_2000_001_XML", "박순"]],cat:"mal",name:"함흥차사",han:"咸興差使",place:"",grade:"B",state:"전승",
+ core:"‘가서 돌아오지 않은 사자’는, 전해지는 판본 가운데 하나에만 나온다.",
+ origin:["태종이 함흥에 머물던 태조에게 보낸 사자들이 돌아오지 못했다는 이야기"],
+ table:{head:["기록","박순은","사자들은"],rows:[
+   ["『태종실록』(정사)","상호군. 함주의 수령들에게 조사의를 따르지 말라고 타이르다 반란군에게 죽음","—"],
+   ["『축수편』(야사)","등장하지 않음. 성석린이 태조를 설득해 화해","활 때문에 문안을 전하지 못함"],
+   ["『노봉집』 시장(야사)","판승추부사. 태조 설득에 성공했으나 돌아오는 길에 태조 측 신하에게 죽음","한 사람도 돌아오지 못함"]]},
+ wonmun:[["勿從思義, 遂被殺于彼軍中","『태종실록』 4권, 태종 2년(1402) 11월 8일 — 원문: 국사편찬위원회 조선왕조실록","조사의를 따르지 말라고 타이르다가, 끝내 그쪽 군중에서 죽임을 당했다.","우리말 풀이: 아카이브 작성자 (국사편찬위원회 국역 참고)","https://sillok.history.go.kr/id/kca_10211008_001"],["半在江中半在船","『연려실기술』 권1 태조조고사본말 「태조의 함흥 주필」, 『노봉집』 시장 인용 — 원문: 한국고전번역원 한국고전종합DB","반은 강 속에, 반은 배 안에.","우리말 풀이: 아카이브 작성자 (한국고전번역원 국역 참고)"]],
+ note:"두 야사 판본 모두 결국 태조가 마음을 돌린다. 그런데 ‘함흥차사’라는 말은 그 결말이 아니라, 사자들이 돌아오지 못했다는 앞부분만 남겼다. 『노봉집』 시장은 시호를 청하며 박순의 공을 높이는 글이다.",
+ sources:["『태종실록』 4권","『연려실기술』 권1 태조조고사본말 「태조의 함흥 주필」"]}
+];
+
+const BY_ID = Object.fromEntries(ITEMS.map(i=>[i.id,i]));
+const main = document.getElementById("main");
+const tabs = document.getElementById("tabs");
+const q = document.getElementById("q");
+const detail = document.getElementById("detail");
+const scrim = document.getElementById("scrim");
+let currentView = "all";
+let lastFocus = null;
+
+const esc = s => String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const clause = t => esc(t).split(/(?<=[,，]) |(?<=—) | (?=—)/).map(c=>`<span class="cl">${c}</span>`).join(" ");
+const gradeBadge = g => `<span class="grade g-${g}" title="출처 등급 ${g}">${g}</span>`;
+
+function row(it){
+  const sub = [CATS[it.cat].label, it.place].filter(Boolean).join(", ");
+  return `<li class="row" tabindex="0" data-id="${it.id}" role="button" aria-label="${esc(it.name)} 자세히 보기">
+    <div><span class="r-name">${esc(it.name)}</span>${it.han?`<span class="r-han">${esc(it.han)}</span>`:""}</div>
+    <div class="r-core-wrap"><p class="r-core">${clause(it.core)}</p><span class="r-meta">${esc(sub)}</span></div>
+    <div class="r-badges">${gradeBadge(it.grade)}<span class="state">${esc(it.state)}</span></div>
+  </li>`;
+}
+
+function matches(it, term){
+  if(!term) return true;
+  const hay = [it.name,it.han,it.place,it.core,(it.variants||[]).map(v=>v[0]).join(" ")].join(" ");
+  return hay.includes(term);
+}
+
+function renderList(cat){
+  const term = q.value.trim();
+  const cats = cat==="all" ? Object.keys(CATS) : [cat];
+  let html = "";
+  if(cat!=="all") html += `<h2 class="section">${CATS[cat].label}</h2><p class="lede">${CATS[cat].sub}</p>`;
+  else html += `<p class="lede">확정 항목 33개. 이름을 누르면 유래와 출처, 원문을 볼 수 있습니다.</p>`;
+  let total = 0;
+  for(const c of cats){
+    const list = ITEMS.filter(i=>i.cat===c && matches(i,term));
+    if(!list.length) continue;
+    total += list.length;
+    if(cat==="all") html += `<h3 class="cat-head">${CATS[c].label} <span style="color:var(--ink-soft);font-weight:400">${list.length}</span></h3>`;
+    html += `<ul class="index">${list.map(row).join("")}</ul>`;
+  }
+  if(!total) html += `<p class="lede">‘${esc(term)}’에 맞는 항목이 없습니다. 한글 이름이나 한자 한 글자로 다시 찾아보세요.</p>`;
+  main.innerHTML = html;
+}
+
+function renderBundles(){
+  const card = id => { const it = BY_ID[id];
+    return `<button class="b-card" data-id="${id}"><div class="b-han">${esc(it.han)}</div><div class="b-place">${esc(it.place)}</div><div class="b-line">${clause(it.core)}</div></button>`; };
+  main.innerHTML = `
+  <h2 class="section">나란히 보기</h2>
+  <p class="lede">기존 자료는 지명을 하나씩 따로 싣습니다. 여기서는 같은 이름이 여러 곳에 있거나, 서로 다른 항목이 하나로 이어질 때 옆에 붙여 놓습니다. 하나만 봐서는 안 보이던 것이 나란히 놓으면 보입니다.</p>
+
+  <section class="bundle">
+    <h3>국사봉 — 같은 소리, 다른 한자</h3>
+    <p class="why">전국에 서른 곳 남짓. 확인한 다섯 곳에서 한자가 세 갈래로 갈렸습니다. 소리를 적은 이름이라 글자를 고르는 데 제약이 없었고, 뜻은 나중에 읽혔습니다.</p>
+    <div class="bundle-grid">${["jy-guksa-jecheon","jy-guksa-geumsan","jy-guksa-jinbong"].map(card).join("")}</div>
+  </section>
+
+  <section class="bundle">
+    <h3>할미산 계열 — 같은 우리말, 다른 한자</h3>
+    <p class="why">‘할미’라는 우리말을 한자로 옮기는 방법이 갈렸습니다. 뜻으로 옮기기도 하고(姑·母), 소리로 옮기기도 하고(高), 왕명으로 바뀌기도 했습니다.</p>
+    <div class="bundle-grid">${["jy-nogo-mapo","jy-nogo-yeongdong","jy-daemosan"].map(card).join("")}</div>
+  </section>
+
+  <section class="bundle">
+    <h3>한자가 바뀐 동네</h3>
+    <p class="why">글자가 바뀌면 이야기가 하나 더 붙습니다. 바뀌는 방식은 저마다 다릅니다.</p>
+    <div class="bundle-grid">${["jm-mokdong","jm-gocheok","jm-dorim"].map(card).join("")}</div>
+  </section>
+
+  <section class="bundle">
+    <h3>남산 봉수망</h3>
+    <p class="why">『동국여지지』에 따르면 목멱산(남산) 봉수는 다섯 방향으로 신호를 주고받았습니다. 서로 다른 항목들이 한 그물로 이어집니다.</p>
+    <div class="network">
+      <span class="node static">한이산</span><span aria-hidden="true">—</span>
+      <button class="node" data-id="jy-achasan">아차산</button><span aria-hidden="true">—</span>
+      <span class="node hub static">목멱산(남산)</span><span aria-hidden="true">—</span>
+      <button class="node" data-id="jy-muakjae">무악 서쪽 봉우리</button><span aria-hidden="true">—</span>
+      <button class="node" data-id="jy-beolgogae">고양 봉현</button>
+    </div>
+    <div class="network" style="margin-top:8px">
+      <span class="node hub static">목멱산(남산)</span><span aria-hidden="true">—</span>
+      <button class="node" data-id="jy-gaehwasan">개화산</button><span aria-hidden="true">—</span>
+      <span class="node static">김포 북성산</span>
+    </div>
+  </section>
+
+  <section class="bundle">
+    <h3>금줄 — 같은 줄, 다른 물건</h3>
+    <p class="why">아기가 태어나면 치는 금줄은 전국에 있지만, 거기 꽂는 물건과 그 뜻은 지역마다 다릅니다.</p>
+    <div class="bundle-grid">${["gs-geumjul"].map(card).join("")}</div>
+  </section>`;
+}
+
+function renderFindings(){
+  main.innerHTML = `
+  <h2 class="section">출처를 따라가 보니</h2>
+  <p class="lede">이 아카이브는 출처를 옮겨 적지 않고 직접 따라갔습니다. 국가기관이 펴낸 자료도 원문과 맞춰 보면 어긋나는 곳이 있었습니다.</p>
+
+  <section class="finding">
+    <h3>원문과 어긋난 서술</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>항목</th><th>한국지명유래집의 서술</th><th>원문을 확인해 보니</th></tr></thead>
+      <tbody>
+        <tr><td>답십리</td><td>『여지대전도』 등에 표현됨</td><td>어디서도 찾을 수 없고, 같은 책의 참고문헌 목록에도 없음</td></tr>
+        <tr><td>벌고개</td><td>세조의 범 사냥 1465년 8월 6일</td><td>『세조실록』은 8월 12일</td></tr>
+        <tr><td>미아리고개</td><td>『신증동국여지승람』에 적유현</td><td>본문에는 없고, 같은 번역서 뒤에 붙은 다른 책 『동국여지비고』에 있음</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="finding">
+    <h3>글자를 바꿔 옮긴 경우</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>항목</th><th>옛 문헌의 표기</th><th>한국지명유래집의 표기</th></tr></thead>
+      <tbody>
+        <tr><td>무악재</td><td><span style="font-family:var(--font-han);font-size:1.15rem">毋嶽</span><br><span style="font-size:.85rem;color:var(--ink-soft)">『동국여지지』 원문</span></td><td><span style="font-family:var(--font-han);font-size:1.15rem">毋岳</span><br><span style="font-size:.85rem;color:var(--ink-soft)">국역문도 毋岳으로 적음</span></td></tr>
+        <tr><td>미아리고개</td><td><span style="font-family:var(--font-han);font-size:1.15rem">狄踰峴</span><br><span style="font-size:.85rem;color:var(--ink-soft)">『동국여지비고』 — 원문은 DB에 없어 국역본이 병기한 한자로 확인</span></td><td><span style="font-family:var(--font-han);font-size:1.15rem">狄逾峴</span></td></tr>
+      </tbody>
+    </table></div>
+    <p class="lede">지명유래집이 옛 문헌을 인용하면서 뜻이 같은 다른 글자로 바꿔 적은 경우입니다. 뜻은 같아도, 글자를 그대로 옮기지 않으면 원문을 찾을 때 검색에 걸리지 않습니다. 실제로 狄逾峴로는 찾지 못했고 狄踰峴로 찾았습니다. 이 아카이브는 옛 문헌의 글자를 그대로 씁니다.</p>
+  </section>
+
+  <section class="finding">
+    <h3>자료와 지금이 다른 경우</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>항목</th><th>자료의 서술</th><th>지금 찾아보니</th></tr></thead>
+      <tbody>
+        <tr><td><button class="chip" data-id="jy-beolgogae">벌고개</button></td><td>고개의 ‘옛 이름’</td><td>지도 검색(2026년 11월)에서 고개 너머 경기 고양시 덕양구 용두동, 서오릉 쪽에 이름이 남아 있음</td></tr>
+      </tbody>
+    </table></div>
+    <p class="lede">전승 상태는 자료에서 옮겨 적지 않고, 지금 기준으로 다시 확인합니다. 자료가 나온 뒤에도 이름은 사라지거나, 자리를 옮겨 살아남기 때문입니다.</p>
+  </section>
+
+  <section class="finding">
+    <h3>확인하지 못해 뺀 것</h3>
+    <div class="scroll"><table>
+      <thead><tr><th>널리 알려진 내용</th><th>결과</th></tr></thead>
+      <tbody>
+        <tr><td>을씨년스럽다(초기 후보) — 『송남잡지』(1855)에 이미 실려 있다</td><td>이 말의 어원을 다룬 대표 논문에 나오지 않음. 출처를 확인할 수 없어 뺐다</td></tr>
+        <tr><td>흥청망청(초기 후보) — 경회루 연회에 흥청·운평 3천여 명을 모았다</td><td>실록에서 찾지 못해 뺐다</td></tr>
+        <tr><td>설날 금기의 지역 분포표</td><td>원래 출처가 적혀 있지 않아 뺐다</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section class="finding">
+    <h3>같은 사전 안에서도 다르게 쓴다</h3>
+    <p class="lede">한국민속대백과사전에는 「삼칠일」과 「금줄」이 각각 두 번씩 실려 있습니다. 이 사전은 분야별로 나뉘어 있어서, 같은 표제어를 신앙 분야와 일생의례 분야가 따로 다루고 집필자도 다릅니다. 그래서 같은 단군신화를 두 사람이 다르게 요약합니다.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>분류와 집필자</th><th>삼칠일을 무엇으로 보는가</th><th>단군신화를 이렇게 요약</th></tr></thead>
+      <tbody>
+        <tr><td>가정신앙 — 구미래</td><td>3과 7이라는 신성한 수가 겹친, 금기를 지키는 신성한 기간</td><td>백 일을 채우기 전, 삼칠일 만에 곰이 여자가 되었다</td></tr>
+        <tr><td>일생의례 — 한양명</td><td>일상에서 떨어져 나왔다가 공동체로 돌아오는 통과의례의 한 과정</td><td>삼칠일 동안 금기를 지킨 곰이 여자가 되었다 — 사람이 되려면 지켜야 할 최소한의 기간</td></tr>
+      </tbody>
+    </table></div>
+    <p class="lede">어느 쪽이 틀린 것은 아닙니다. 『삼국유사』 고조선조에는 환웅이 내건 조건인 ‘백 일’과, 곰이 실제로 여자가 된 ‘삼칠일’이 함께 나옵니다. 두 사람은 같은 대목에서 자기 분야가 주목하는 숫자를 앞세웠습니다. 백 일과 함께 말하면 삼칠일은 ‘앞당겨진 변신’이 되고, 삼칠일만 말하면 ‘반드시 지켜야 할 기간’이 됩니다. 원자료를 나란히 놓으면 이런 관점의 차이가 드러납니다.</p>
+  </section>`;
+}
+
+function render(){
+  for(const b of tabs.querySelectorAll(".tab")) b.setAttribute("aria-current", b.dataset.view===currentView ? "page" : "false");
+  if(currentView==="bundle") renderBundles();
+  else if(currentView==="chulcheon") renderFindings();
+  else renderList(currentView);
+}
+
+function section(title, body){ return body ? `<h4>${title}</h4>${body}` : ""; }
+function go(it){
+  const a=[];
+  (it.refs||[]).forEach(r=>a.push(`<a class="chip" href="${esc(r[1])}" target="_blank" rel="noopener">${esc(r[0])} ↗${r[2]?`<span style="display:block;font-size:.8rem;color:var(--ink-soft)">열린 쪽에서 ‘${esc(r[2])}’ 찾기</span>`:""}</a>`));
+  if(it.map) a.push(`<a class="chip" href="https://map.kakao.com/link/search/${encodeURIComponent(it.map)}" target="_blank" rel="noopener">지도·로드뷰로 보기 ↗</a>`);
+  return a.join("");
+}
+
+function openDetail(id){
+  const it = BY_ID[id]; if(!it) return;
+  lastFocus = document.activeElement;
+  const origin = it.origin && it.origin.length
+    ? `<ul>${it.origin.map(o=>`<li>${esc(o)}</li>`).join("")}</ul>`
+    : `<p>${esc(it.noOrigin||"")}</p>`;
+  const variants = it.variants ? `<div class="scroll"><table><thead><tr><th>표기</th><th>뜻</th><th>나오는 곳</th></tr></thead><tbody>${it.variants.map(v=>`<tr><td style="font-family:var(--font-han);font-size:1.15rem">${esc(v[0])}</td><td>${esc(v[1])}</td><td>${esc(v[2])}</td></tr>`).join("")}</tbody></table></div>` : "";
+  const tbl = it.table ? `<div class="scroll"><table><thead><tr>${it.table.head.map(h=>`<th>${esc(h)}</th>`).join("")}</tr></thead><tbody>${it.table.rows.map(r=>`<tr>${r.map(c=>`<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>` : "";
+  const wonmun = it.wonmun ? it.wonmun.map(w=>`<p class="wonmun" lang="zh-Hant">${esc(w[0])}</p><p class="wonmun-src">${esc(w[1])}${w[4]?` — <a href="${esc(w[4])}" target="_blank" rel="noopener">원문 보기 ↗</a>`:""}</p>${w[2]?`<p class="gloss">${esc(w[2])}</p><p class="wonmun-src" style="margin-bottom:18px">${esc(w[3]||"우리말 풀이: 아카이브 작성자")}</p>`:""}`).join("") : "";
+  const links = it.links ? it.links.filter(l=>BY_ID[l]).map(l=>`<button class="chip" data-id="${l}">${esc(BY_ID[l].name)}${BY_ID[l].han?" "+esc(BY_ID[l].han):""}</button>`).join("") : "";
+  detail.innerHTML = `
+    <button class="d-close" id="d-close">닫기</button>
+    <p class="d-cat">${CATS[it.cat].label}</p>
+    <h2 class="d-name" id="d-name">${esc(it.name)}</h2>
+    ${it.han?`<p class="d-han">${esc(it.han)}</p>`:""}
+    ${it.place?`<p class="d-place">${esc(it.place)}</p>`:""}
+    <p class="d-core">${clause(it.core)}</p>
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">${gradeBadge(it.grade)}<span>출처 등급 ${it.grade}</span><span class="state">전승: ${esc(it.state)}</span></div>
+    ${it.stateNote?`<p style="font-size:.92rem;color:var(--ink-soft);margin:8px 0 0">${esc(it.stateNote)}</p>`:""}
+    ${section(it.cat==="geumgi"?"뿌리":"전해지는 이야기", origin)}
+    ${section("표기", variants)}
+    ${section(it.cat==="geumgi"?"지역과 상황에 따라":"나란히 보기", tbl)}
+    ${section("원문", wonmun)}
+    ${section("살펴볼 점", it.note?`<p class="note">${esc(it.note)}</p>`:"")}
+    ${section("출처", `<ul class="src-list">${it.sources.map(s=>`<li>${esc(s)}</li>`).join("")}</ul>`)}
+    ${section("바로가기", go(it))}
+    ${section("이어지는 항목", links)}
+  `;
+  detail.hidden = false;
+  requestAnimationFrame(()=>{ detail.classList.add("open"); scrim.classList.add("open"); });
+  document.body.style.overflow = "hidden";
+  document.getElementById("d-close").focus();
+}
+
+function closeDetail(){
+  detail.classList.remove("open"); scrim.classList.remove("open");
+  document.body.style.overflow = "";
+  setTimeout(()=>{ detail.hidden = true; }, 220);
+  if(BY_ID[location.hash.slice(1)]) history.replaceState(null,"","#"+currentView);
+  if(lastFocus && lastFocus.focus) lastFocus.focus();
+}
+
+function route(){
+  const h = location.hash.slice(1);
+  if(BY_ID[h]){ if(main.innerHTML==="") render(); openDetail(h); return; }
+  const views = ["all","jimyeong","jayeon","geumgi","mal","bundle","chulcheon"];
+  currentView = views.includes(h) ? h : "all";
+  if(!detail.hidden) { detail.classList.remove("open"); scrim.classList.remove("open"); detail.hidden = true; document.body.style.overflow=""; }
+  render();
+}
+
+tabs.addEventListener("click", e=>{
+  const b = e.target.closest(".tab"); if(!b) return;
+  location.hash = b.dataset.view;
+});
+q.addEventListener("input", ()=>{
+  if(["bundle","chulcheon"].includes(currentView)){ currentView="all"; history.replaceState(null,"","#all"); }
+  render();
+});
+document.addEventListener("click", e=>{
+  if(e.target.id==="d-close"){ closeDetail(); return; }
+  const t = e.target.closest("[data-id]");
+  if(t && BY_ID[t.dataset.id]) location.hash = t.dataset.id;
+});
+document.addEventListener("keydown", e=>{
+  if(e.key==="Escape" && !detail.hidden) closeDetail();
+  if((e.key==="Enter"||e.key===" ") && e.target.classList && e.target.classList.contains("row")){ e.preventDefault(); location.hash = e.target.dataset.id; }
+});
+scrim.addEventListener("click", closeDetail);
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
